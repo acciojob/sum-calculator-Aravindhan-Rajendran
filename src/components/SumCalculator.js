@@ -1,6 +1,4 @@
-// SumCalculator.js
 import React, { useState, useEffect } from 'react';
-import '../styles/App.css';
 
 function SumCalculator() {
     const [numbers, setNumbers] = useState([]);
@@ -8,11 +6,13 @@ function SumCalculator() {
     const [inputValue, setInputValue] = useState('');
     const [error, setError] = useState('');
 
+    // Handle input change
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
-        setError('');
+        setError(''); // Clear error when user starts typing
     };
 
+    // Add number to the list
     const handleAddNumber = () => {
         const number = parseInt(inputValue, 10);
         if (!isNaN(number)) {
@@ -23,13 +23,23 @@ function SumCalculator() {
         }
     };
 
-useEffect(() => {
-    new Promise((resolve) => {
-        const total = numbers.reduce((acc, num) => acc + num, 0);
-        resolve(total);
-    })
-    .then(total => setSum(total));
-}, [numbers]);
+    // Calculate sum asynchronously
+    useEffect(() => {
+        const calculateSum = async () => {
+            try {
+                const total = await new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve(numbers.reduce((acc, num) => acc + num, 0));
+                    }, 0);
+                });
+                setSum(total);
+            } catch (error) {
+                console.error('Error calculating sum:', error);
+            }
+        };
+
+        calculateSum();
+    }, [numbers]);
 
     return (
         <div className="calculator-container">
