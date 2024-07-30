@@ -23,24 +23,17 @@ function SumCalculator() {
         }
     };
 
-    // Calculate sum asynchronously
-    useEffect(() => {
-        const calculateSum = async () => {
-            try {
-                const total = await new Promise((resolve) => {
-                    setTimeout(() => {
-                        resolve(numbers.reduce((acc, num) => acc + num, 0));
-                    }, 0);
-                });
-                setSum(total);
-            } catch (error) {
-                console.error('Error calculating sum:', error);
-            }
-        };
+useEffect(() => {
+    // Create a Promise to simulate asynchronous behavior
+    const promise = new Promise((resolve) => {
+        // Calculate the total sum
+        const total = numbers.reduce((acc, num) => acc + num, 0);
+        resolve(total);
+    });
 
-        calculateSum();
-    }, [numbers]);
-
+    // Update the sum when the Promise resolves
+    promise.then(total => setSum(total));
+}, [numbers]);
     return (
         <div className="calculator-container">
             <h1 className="title">Sum Calculator</h1>
