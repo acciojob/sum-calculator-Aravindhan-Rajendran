@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-function SumCalculator() {
+function App() {
     const [numbers, setNumbers] = useState([]);
     const [sum, setSum] = useState(0);
     const [inputValue, setInputValue] = useState('');
@@ -57,4 +57,4 @@ function SumCalculator() {
     );
 }
 
-export default SumCalculator;
+export default App;
