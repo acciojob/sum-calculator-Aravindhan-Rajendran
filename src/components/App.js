@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '@babel/polyfill'; // Ensure polyfill is included if not imported globally
 
 function App() {
     const [numbers, setNumbers] = useState([]);
