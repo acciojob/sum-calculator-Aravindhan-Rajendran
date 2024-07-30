@@ -50,7 +50,7 @@ useEffect(() => {
                 </button>
             </div>
             {error && <p className="error-message">{error}</p>}
-            <h2 className="total-sum">Total Sum: {sum}</h2>
+            <p className="total-sum">Total Sum: {sum}</p>
             <ul className="number-list">
                 {numbers.map((num, index) => (
                     <li key={index} className="number-item">{num}</li>
