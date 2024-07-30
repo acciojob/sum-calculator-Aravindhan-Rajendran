@@ -23,15 +23,13 @@ function SumCalculator() {
         }
     };
 
-    useEffect(() => {
-        const calculateSum = async () => {
-            await new Promise((resolve) => setTimeout(resolve, 0));
-            const total = numbers.reduce((acc, num) => acc + num, 0);
-            setSum(total);
-        };
-
-        calculateSum();
-    }, [numbers]);
+useEffect(() => {
+    new Promise((resolve) => {
+        const total = numbers.reduce((acc, num) => acc + num, 0);
+        resolve(total);
+    })
+    .then(total => setSum(total));
+}, [numbers]);
 
     return (
         <div className="calculator-container">
